@@ -1,1 +1,25 @@
-mis notas de recuperacion
+RECUPERACIÓN DE CONTRASEÑA ROOT DE MYSQL
+========================================
+
+Para recuperar la contraseña del root de mysql necesitamos indicar los siguientes pasos
+
+1- Iniciar en modo seguro
+
+***
+sudo mysqld_safe --skip-grant-tables --skip-networkin
+***
+
+    --skip-grant-tables : Permite conectarnos al servidor sin colocar un password.
+    --skip-networkin : Detiene la atencion de peticiones TCP/IP
+
+2- Luego abrimos otra pestaña e ingresamos con nuestras credenciales ssh, una vez dentro ingresamos a mysql
+
+***
+mysql -u root -p
+
+>UPDATE user SET password=PASSWORD('tu_password') WHERE user='root';
+>FLUSH PRIVILEGES;
+> exit
+
+***
+
